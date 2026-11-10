@@ -1,10 +1,10 @@
 {
-  "recordedAt": "2026-11-10T07:15:25.527Z",
-  "renderedAt": "2026-11-10T07:15:13.116Z",
+  "recordedAt": "2026-11-10T09:11:20.363Z",
+  "renderedAt": "2026-11-10T09:10:00.29Z",
   "page": "src/routes/kb/incidents/4471-review/+page.svx",
   "html": "rendered/4471-review.html",
   "sha256": {
-    "src/routes/kb/incidents/4471-review/+page.svx": "3479679274688b8fd60e62cee467872d6c334e56ab8dce16b07d91a87a2f5460",
+    "src/routes/kb/incidents/4471-review/+page.svx": "15e9dcfdba9a94d09a0c1c793baec2f0898fd7f33512e7a32e80a15e444d9d53",
     "delivery/issues.json": "d466c7dafeab4d5c12d0cf27f6c7b27d0ab6ec8331ded0b4c927546dbd9e61fe",
     "src/lib/kb/causes.ts": "4dc0e16cd55556f820dd2f287d83278f36387caf1b9aa7d83c29845357cfd79f",
     "src/lib/kb/locales.ts": "264dd51e35c8239ac2a0bd6d383986a39f1be8bc25b01522d0740912fe2f0acd",
@@ -21,31 +21,25 @@
     "src/lib/data/tenants/pale.harbour.json": "745e086c2ccfe7e2d06fc75f58c1332bc80e02dc52e58eaafcc678e0918e9bc9",
     "src/lib/data/tenants/ridge.clinic.json": "72f857f7662081709af1364d8b609fa9c1a9ee39b691076635b86aa230c294f1",
     "src/lib/data/tenants/stone.and.sons.json": "b473543cf5e87cba4dc4bb621baa27f4c544ac98737f691f98641e3f67f06ec4",
-    "rendered/4471-review.html": "0e58134658ccc166dfc23013a59973945be4fd0d967c3ae49f039a8794112c5a"
+    "rendered/4471-review.html": "ae8acac780023364948de7e471bf79eaaa1f0f8fc3a61de2b76642924bdb3587"
   },
   "browserReview": {
-    "status": "passed",
-    "reviewedAt": "2026-11-10T07:17:14.2751422Z",
+    "status": "passed-with-limitation",
+    "reviewedAt": "2026-11-10T09:11:49.5467183Z",
     "method": "Generated HTML loaded into Chromium with setContent; direct file navigation blocked by tool.",
-    "desktop": "1280x900 light, full-page screenshot inspected",
-    "narrow": "390x844 dark, document scrollWidth 386, no horizontal overflow",
-    "zoom": "200% document zoom, no horizontal overflow",
-    "keyboard": "All 11 links reached in document order with visible focus",
+    "desktop": "1280x900 light; full-page screenshot visually inspected",
+    "narrow": "390x844 dark; document scrollWidth386/clientWidth375: 11px overflow in original component layout",
+    "zoom": "200% document zoom: scrollWidth1265/clientWidth1265",
+    "keyboard": "All 11 links reached with visible focus",
     "counts": [
       412,
       379,
       33
     ],
     "footnoteReports": 5,
-    "deskRef": "DR-HSVT-4XQA",
-    "consoleErrors": 0,
-    "issueUrls": [
-      "https://github.com/BMachnik/mega-s01e03/issues/1",
-      "https://github.com/BMachnik/mega-s01e03/issues/2"
-    ],
-    "remoteIssues": "Both issue bodies and URLs verified by gh readback",
-    "knownLimitation": "Original /kb breadcrumb needs routing; local source href targets checked on disk, file navigation not activated.",
+    "deskRef": "DR-4Q4Z-0TRZ",
+    "knownLimitation": "Original /kb breadcrumb requires routing; file navigation not activated. Small narrow-view overflow retained in original layout.",
     "screenshot": "rendered/4471-review.png",
-    "screenshotSha256": "e3be1e4a6c1b180e056bc11d0239c2ff832a64792597a5aac84d55a9ba7bbeb5"
+    "screenshotSha256": "51f962385bc4570cc60a664b7f2e0fcfe952275f564c710ffdb63f72cda51cc8"
   }
 }

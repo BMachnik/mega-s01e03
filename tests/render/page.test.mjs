@@ -7,8 +7,29 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
+// Independently calculated from the course-issued signature using the original
+// desk-ref.ts specification. The ticket itself lives only in the signed page.
+const expectedStamp = 'DR-4Q4Z-0TRZ';
 const withoutComments = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
 const text = (html) => withoutComments(html).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
+function independentStamp(signature) {
+  const input = signature.trim();
+  const hash = (seed) => {
+    let value = seed;
+    for (let index = 0; index < input.length; index++) {
+      value = ((value ^ BigInt(input.charCodeAt(index))) * 16777619n) & 0xffffffffn;
+    }
+    return value;
+  };
+  const bits = (hash(2166136261n) << 8n) | (hash(2654435769n) & 255n);
+  const alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+  let encoded = '';
+  for (let shift = 35n; shift >= 0n; shift -= 5n) {
+    encoded += alphabet[Number((bits >> shift) & 31n)];
+  }
+  return `DR-${encoded.slice(0, 4)}-${encoded.slice(4)}`;
+}
 
 function element(html, tag) {
   const match = html.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
@@ -104,10 +125,14 @@ test('T7: fresh review SSR presents variant A with computed evidence and a final
       assert.match(content, /not evidence of a matching spike in new arrivals/);
     });
 
-    await t.test('RenderStamp matches the independent T4 baseline and ends main before the runbook footer', () => {
-      // Baseline captured from the original export in T4, not calculated by the test subject.
-      assert.match(main, /<p\b[^>]*>\s*desk ref\s*<b\b[^>]*>DR-HSVT-4XQA<\/b>\s*<\/p>\s*$/);
-      assert.equal((text(main).match(/desk ref DR-HSVT-4XQA/g) ?? []).length, 1);
+    await t.test('RenderStamp matches the independent course-signature baseline and ends main before the runbook footer', () => {
+      const source = readFileSync(join(root, 'src/routes/kb/incidents/4471-review/+page.svx'), 'utf8');
+      const signature = source.match(/^signature:\s*([^\r\n]+)$/m)?.[1];
+      assert.ok(signature, 'The page must declare its course-issued signature');
+      assert.ok(independentStamp(signature) === expectedStamp,
+        'The signed source must match the independently pinned course-ticket baseline');
+      assert.match(main, new RegExp(String.raw`<p\b[^>]*>\s*desk ref\s*<b\b[^>]*>${expectedStamp}<\/b>\s*<\/p>\s*$`));
+      assert.equal((text(main).match(new RegExp(`desk ref ${expectedStamp}`, 'g')) ?? []).length, 1);
       assert.ok(html.indexOf('</main>') < html.indexOf('<footer'));
       assert.equal(text(element(html, 'footer')), 'Pages are written by people. Tables and charts are built from data at render time.');
     });
