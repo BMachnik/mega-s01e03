@@ -92,9 +92,9 @@ test('T6: new review skeleton renders with owner and a computed signature', () =
   withRender('src/routes/kb/incidents/4471-review/+page.svx', (result, output) => {
     const html = successfulHtml(result, output);
     assert.match(text(html), /owner BMachnik/);
-    assert.match(text(html), /desk ref DR-HSVT-4XQA/);
+    assert.match(text(html), /desk ref DR-4Q4Z-0TRZ/);
     const source = readFileSync(join(root, 'src/routes/kb/incidents/4471-review/+page.svx'), 'utf8');
-    assert.doesNotMatch(source, /DR-HSVT-4XQA/, 'The page must derive its ref through RenderStamp');
+    assert.doesNotMatch(source, /DR-4Q4Z-0TRZ/, 'The page must derive its ref through RenderStamp');
   });
 });
 
