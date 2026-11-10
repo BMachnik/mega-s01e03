@@ -1,0 +1,13 @@
+---
+layout: runbook
+title: Unsigned render fixture
+owner: BMachnik
+status: review
+reviewed: 2026-09-30
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+<RenderStamp />

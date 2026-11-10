@@ -1,0 +1,77 @@
+---
+layout: runbook
+title: '#4471 · causes and report split'
+owner: BMachnik
+status: review
+reviewed: 2026-11-10
+signature: BMachnik
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import issues from '../../../../../delivery/issues.json';
+</script>
+
+Reports merged into #4471 need to be separated by cause. The exported classifier distinguishes
+a shared date parser from a booking-form hint mismatch; a matching subject does not establish
+a shared cause. The table counts each report ID once, even when export pages overlap.
+
+<CauseTable ticket={4471} />
+
+## What we report
+
+**Parser.** The shared parser reads dates month first, while day-first tenants write the day
+first. This can swap the intended day and month. Assignment requires a day-first tenant and
+an app/email report or a booking-v2 form report. App/email reports from booking-v3 tenants
+also belong here; the form-hint condition below applies only to the form channel.
+
+<p>{#if issues.parser.url}<a href={issues.parser.url}>Parser issue: shared month-first date interpretation</a>{:else}Parser issue not yet published. The <a href="../delivery/issues/parser.md">local parser issue draft</a> is ready for review.{/if}</p>
+
+**Hint.** Booking-v3 displays `MM/DD/YYYY`, while its form interprets the date in the
+tenant's day-first order. Following the displayed hint can therefore produce the wrong date.
+Assignment requires a day-first tenant, the form channel and booking-v3's month-first hint.
+The hint and the form's interpretation need to agree.
+
+<p>{#if issues.hint.url}<a href={issues.hint.url}>Hint issue: booking-v3 date guidance and interpretation disagree</a>{:else}Hint issue not yet published. The <a href="../delivery/issues/hint.md">local hint issue draft</a> is ready for review.{/if}</p>
+
+Intake tags are guesses based on the reporter's browser. The table shows tags within each
+computed cause, including disagreements. Tenant locale, tenant form and report channel
+determine assignment; subject, browser locale and intake tag do not.
+
+<Callout kind="warn">
+The desk-note reports footnoted under the table remain counted once in the parser group.
+Their wording includes one-day differences, a June-only shift and an invite arriving before
+booking. Those symptoms need further investigation: they do not establish a timezone defect
+or another cause. The export provides classification evidence, not a verified production fix.
+</Callout>
+
+## Incoming reports and merges
+
+<QueueTimeline ticket={4471} />
+
+The received series groups reports by `receivedAt`, when they reached the desk. The merged
+series groups them by `mergedAt`, when they were attached to the ticket. A merge spike can
+collect older reports; it is not evidence of a matching spike in new arrivals. For example,
+R-41200 was received on 2026-04-01 and merged on 2026-07-02.
+
+## Basis of this review
+
+The original exported components compute the counts, date ranges, tenant totals, tags,
+footnote and timeline above. These local source files accompany this standalone HTML.
+Repository: [BMachnik/mega-s01e03](https://github.com/BMachnik/mega-s01e03).
+
+- [Report export with IDs, receipt dates and merge dates](../src/lib/data/reports-4471.json).
+- [Tenant locale and form lookup](../src/lib/kb/locales.ts) and [executable cause classification and ID deduplication](../src/lib/kb/causes.ts).
+- [Desk-note IDs behind the parser footnote](../src/lib/data/desk-notes.json).
+- [Reproducible analysis and complete group ID sets](../delivery/analysis.json).
+- [Original incident page source](../src/routes/kb/incidents/4471/+page.svx), which describes the merged ticket as a single issue.
+- [Accepted historical subject-based deduplication decision source](../src/routes/kb/decisions/0001-dedupe-by-subject/+page.svx).
+
+The historical decision remains unchanged. This review records the discrepancy between
+subject-based merging and the executable cause classification; it does not declare that
+accepted decision superseded. Source links open files, rather than hosted KB pages.
+
+<RenderStamp {signature} />

@@ -1,0 +1,51 @@
+{
+  "recordedAt": "2026-11-10T07:15:25.527Z",
+  "renderedAt": "2026-11-10T07:15:13.116Z",
+  "page": "src/routes/kb/incidents/4471-review/+page.svx",
+  "html": "rendered/4471-review.html",
+  "sha256": {
+    "src/routes/kb/incidents/4471-review/+page.svx": "3479679274688b8fd60e62cee467872d6c334e56ab8dce16b07d91a87a2f5460",
+    "delivery/issues.json": "d466c7dafeab4d5c12d0cf27f6c7b27d0ab6ec8331ded0b4c927546dbd9e61fe",
+    "src/lib/kb/causes.ts": "4dc0e16cd55556f820dd2f287d83278f36387caf1b9aa7d83c29845357cfd79f",
+    "src/lib/kb/locales.ts": "264dd51e35c8239ac2a0bd6d383986a39f1be8bc25b01522d0740912fe2f0acd",
+    "src/lib/data/desk-notes.json": "a5ffbc829486847f2e301697cc787781b9ff504a69a75233fc8dc6d3cc3ad053",
+    "src/lib/data/reports-4471.json": "2bd8489da70d4dd5ead1b6c58bda0e7ec563bb7dcc19c1f0444a6e04de470b7c",
+    "src/lib/data/tenants/alder.physio.json": "b585e7cd7d7e610f3450f4e09501e854934abf0faa7c65a0bfbddfc046028a67",
+    "src/lib/data/tenants/copper.studio.json": "47addd3eec170f0e6afc81d27482abb204a85f8a92aa230617b957c681f270c8",
+    "src/lib/data/tenants/harbour.dental.json": "c60efc676e2a0608dcc40ab2e5efc3044ebed25e644e8982064d9702c44928c9",
+    "src/lib/data/tenants/kettle.books.json": "a70d02536552c27c5cf560c89ccc588fe37925576689c84522a709332dece071",
+    "src/lib/data/tenants/lantern.row.json": "b741ab07862b12ed2b4b3285d1ab48e41df477ed912c001fbf11edb6e92661c8",
+    "src/lib/data/tenants/long.table.json": "f1f6e93079e62d2e76665424ef0c32538338510a883e583145912536ed3b290b",
+    "src/lib/data/tenants/morrow.tax.json": "3902dfe31e7631a666ae9032fec8ead8cd193f30b359b58b068b976d3d32d70f",
+    "src/lib/data/tenants/nine.lanterns.json": "78290d3b801f6d9be1900a3c8c1ffa2e47a4be262ebf9145ee28b02cf4b92564",
+    "src/lib/data/tenants/pale.harbour.json": "745e086c2ccfe7e2d06fc75f58c1332bc80e02dc52e58eaafcc678e0918e9bc9",
+    "src/lib/data/tenants/ridge.clinic.json": "72f857f7662081709af1364d8b609fa9c1a9ee39b691076635b86aa230c294f1",
+    "src/lib/data/tenants/stone.and.sons.json": "b473543cf5e87cba4dc4bb621baa27f4c544ac98737f691f98641e3f67f06ec4",
+    "rendered/4471-review.html": "0e58134658ccc166dfc23013a59973945be4fd0d967c3ae49f039a8794112c5a"
+  },
+  "browserReview": {
+    "status": "passed",
+    "reviewedAt": "2026-11-10T07:17:14.2751422Z",
+    "method": "Generated HTML loaded into Chromium with setContent; direct file navigation blocked by tool.",
+    "desktop": "1280x900 light, full-page screenshot inspected",
+    "narrow": "390x844 dark, document scrollWidth 386, no horizontal overflow",
+    "zoom": "200% document zoom, no horizontal overflow",
+    "keyboard": "All 11 links reached in document order with visible focus",
+    "counts": [
+      412,
+      379,
+      33
+    ],
+    "footnoteReports": 5,
+    "deskRef": "DR-HSVT-4XQA",
+    "consoleErrors": 0,
+    "issueUrls": [
+      "https://github.com/BMachnik/mega-s01e03/issues/1",
+      "https://github.com/BMachnik/mega-s01e03/issues/2"
+    ],
+    "remoteIssues": "Both issue bodies and URLs verified by gh readback",
+    "knownLimitation": "Original /kb breadcrumb needs routing; local source href targets checked on disk, file navigation not activated.",
+    "screenshot": "rendered/4471-review.png",
+    "screenshotSha256": "e3be1e4a6c1b180e056bc11d0239c2ff832a64792597a5aac84d55a9ba7bbeb5"
+  }
+}

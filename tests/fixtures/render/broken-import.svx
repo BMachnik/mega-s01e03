@@ -1,0 +1,13 @@
+---
+layout: runbook
+title: Broken import fixture
+owner: BMachnik
+status: review
+reviewed: 2026-09-30
+---
+
+<script>
+  import MissingComponent from '#lib/kb/DeliberatelyMissingForT8.svelte';
+</script>
+
+<MissingComponent />

@@ -1,0 +1,13 @@
+---
+layout: runbook
+title: Empty ticket fixture
+owner: BMachnik
+status: review
+reviewed: 2026-09-30
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+</script>
+
+<CauseTable ticket={999999} />
